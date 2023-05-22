@@ -9,15 +9,16 @@ function MultipleList() {
     const handleChange = (e) => {
         setValue(e.target.value)
     }
+
     useEffect(() => {
-        if(value !== 0) {
+        if(value != 0) {
             let count = 1
             let number = []
             while (true) {
 
                 const result = value*count
 
-                if (value === 0 || result > 100) {
+                if (result > 100||value == 0) {
                     break;
                 }
 
