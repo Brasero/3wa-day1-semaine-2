@@ -40,6 +40,7 @@ function Form () {
             return
         }
 
+        //On utilise la notation "[]" afin de pouvoir utiliser une variable comme propriété d'un objet
         setUser({...user, [name]: value.trim()})
         setMessage('')
 
@@ -48,18 +49,22 @@ function Form () {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        //On vérifie que le nom n'est pas vide
         if (user.trim() === "") {
             setMessage("Merci de saisir un nom");
             return
         }
 
+        //On vérifie que le nom n'existe pas déjà
         if (users.includes(user)) {
             setUser('')
+            //On met à jour le message d'erreur avec le nom qui existe déjà
+            //il est possible d'utiliser la valeur de "user" car on a utilisé la méthode "trim()" dans la fonction "handleChange".
             setMessage(`Le nom ${user} existe déjà`)
             return
         }
 
-
+        //On ajoute le nom au tableau "users".
         const values = [...users]
         values.push(user)
         setUsers(values)
@@ -70,6 +75,7 @@ function Form () {
             {message && <span>{message}</span>}
 
             {
+                //On map sur le tableau "formInfo" afin de créer un Input pour chaque objet du tableau
                 formInfo.map((elem, key) => {
                    return (
                        <Input key={key} name={elem.name} type={elem.type} value={user[elem.name]} onChange={handleChange}/>

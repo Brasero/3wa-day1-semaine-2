@@ -11,7 +11,7 @@ function UncontrolForm() {
     }
 
     const handleChange = (e) => {
-        //On récupére la valeur au traver du target de l'event
+        //On récupère la valeur au traver du target de l'event
         let value = e.target.value
 
         //On change la valeur en majuscule uniquement
